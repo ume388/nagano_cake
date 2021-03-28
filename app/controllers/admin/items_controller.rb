@@ -1,13 +1,20 @@
 class Admin::ItemsController < ApplicationController
   
   def index
+    @items = Item.all
   end
   
   def new
-    @item = Item
+    @item = Item.new
   end
   
   def create
+    @item = Item.new
+    if @item.save
+      redirect_to admin_item_path(@item)
+    else
+      render 'new'
+    end
   end
   
   def show
@@ -17,6 +24,12 @@ class Admin::ItemsController < ApplicationController
   end
   
   def update
+  end
+  
+  private
+  
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction, :price)
   end
   
 end
