@@ -3,10 +3,9 @@
   
   <div>
     <% @items.each do |item| %>
-      <%= link_to item_path(item.id) %>
-      <&= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpag', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
       <%= item.name %>
       ￥<%= item.price %>
+    <% end %>
   </div>
-  <% end %>
 </div>
