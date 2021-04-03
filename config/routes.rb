@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'items' => 'public/items#index'
+  get 'items/:id' => 'public/items#show'
   
   namespace :public do
   end
