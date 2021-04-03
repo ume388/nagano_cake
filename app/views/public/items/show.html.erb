@@ -1,0 +1,21 @@
+<div>
+  <div>
+    <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: 'no_image.jpg'%>
+  </div>
+  
+  <div>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>￥<%= @item.price * 1.08 %>（税込）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
