@@ -8,4 +8,10 @@ class Public::OrdersController < ApplicationController
   def create
   end
   
+  def comfirm
+  end
+
+  def complete
+  end
+  
 end
