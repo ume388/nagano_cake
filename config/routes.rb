@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     resources :cart_items
     resources :orders
+    get 'customers/my_page', to: 'customers#show'
+    get 'customers/edit' => 'customers#edit'
   end
   
   namespace :public do
