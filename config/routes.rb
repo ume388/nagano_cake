@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   
-  root to: 'public/homes#top'
-  get 'about' => 'public/homes#about'
-  get 'items' => 'public/items#index'
-  get 'items/:id' => 'public/items#show'
+  scope module: 'public' do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    resources :items, only: [:show, :index]
+    resources :cart_items
+  end
   
   namespace :public do
   end
