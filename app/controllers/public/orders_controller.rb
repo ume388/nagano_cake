@@ -8,6 +8,10 @@ class Public::OrdersController < ApplicationController
   def create
   end
   
+  def index
+    @orders = current_customer.orders
+  end
+  
   def comfirm
   end
 
