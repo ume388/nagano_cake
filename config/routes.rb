@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only: [:show, :index]
     resources :cart_items
-    resources :orders
+    resources :orders do
+      post :confirm, on: :collection
+    end
     get 'customers/my_page', to: 'customers#show'
     get 'customers/edit' => 'customers#edit'
   end

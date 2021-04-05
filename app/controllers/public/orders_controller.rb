@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.orders
   end
   
-  def comfirm
+  def confirm
   end
 
   def complete
