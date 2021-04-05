@@ -24,7 +24,7 @@
             <%= cart_item.item.name %>
           </td>
           <td>
-            ￥<%= cart_item.item.price * 1.08 %>
+            ￥<%= (cart_item.item.price * 1.08).round %>
           </td>
           <td>
             <%= form_for(cart_item, url: cart_item_path(cart_item)) do |c| %>
@@ -33,7 +33,7 @@
             <% end %>
           </td>
           <td>
-            ￥<%= cart_item.item.price * cart_item.amount * 1.08 %>
+            ￥<%= (cart_item.item.price * cart_item.amount * 1.08).round %>
           </td>
           <td>
             <%= link_to "削除する", cart_item_path(cart_item.id), method: :DELETE %>
@@ -52,7 +52,7 @@
     <table>
       <tr>
         <td>合計金額</td>
-        <td><%= @total_price %></td>
+        <td><%= @total_price.round %></td>
       </tr>
     </table>
   </div>

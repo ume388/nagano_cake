@@ -5,7 +5,7 @@
     <% @items.each do |item| %>
       <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
       <%= item.name %>
-      ￥<%= item.price %>
+      ￥<%= item.price.round %>
     <% end %>
   </div>
 </div>
