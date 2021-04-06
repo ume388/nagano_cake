@@ -2,11 +2,11 @@ class Public::OrdersController < ApplicationController
   
   def new
     @customer = current_customer
-    @order = Order.new
+    @order = Order.new(order_params)
   end
   
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.save
     redirect_to complete_orders_path
     
@@ -26,8 +26,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
-    @cart_items = current_customer.cart_items
-    @order = Order.new
+    @cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.08}
     
     if 0
@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment)
+    params.permit(:postal_code, :address, :name, :total_payment)
   end
   
   def address_params
