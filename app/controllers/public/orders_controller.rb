@@ -16,6 +16,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_items = current_customer.cart_items
     @order = Order.new
+    @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.08}
   end
 
   def complete
