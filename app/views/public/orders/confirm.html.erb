@@ -46,7 +46,7 @@
       </tr>
       <tr>
         <th>請求金額</th>
-        <td></td>
+        <td><%= (@order.shipping_cost + @total_price).round %></td>
       </tr>
     </table>
   </div>
