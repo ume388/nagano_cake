@@ -8,5 +8,6 @@
 
 Admin.create!(
   email: "admin@do.com",
-  password: "1031388m"
+  password: "1031388m",
+  encrypted_password: "1031388m"
 )
