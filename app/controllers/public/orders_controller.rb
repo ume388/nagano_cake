@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    @cart_items = current_customer.cart_items
   end
   
   def index
@@ -13,6 +14,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
+    @cart_items = current_customer.cart_items
+    @order = Order.new
   end
 
   def complete
