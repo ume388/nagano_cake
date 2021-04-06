@@ -4,9 +4,9 @@
   <div>
     <%= form_with url:confirm_orders_path, method: :post, local: true do |form| %>
       <h3>支払方法</h3>
-      <%= form.radio_button :payment_method, 0 %>
+      <%= form.radio_button :payment_method, "クレジットカード" %>
       <%= form.label :クレジットカード %><br>
-      <%= form.radio_button :payment_method, 1 %>
+      <%= form.radio_button :payment_method, "銀行振込" %>
       <%= form.label :銀行振込 %>
   
       <h3>お届け先</h3>
