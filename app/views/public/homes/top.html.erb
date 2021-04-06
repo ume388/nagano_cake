@@ -11,7 +11,7 @@
     <% @items.last(4).each do |item| %>
       <%= attachment_image_tag item, :image, :fill, 50, 50, format: 'jpag', fallback: "no_image.jpg" %><br>
       <%= link_to item.name, item_path(item.id) %><br>
-      <%= item.price %><br>
+      ￥<%= item.price %><br>
     <% end %>
   </div>
   
