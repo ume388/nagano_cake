@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :cart_items
     resources :orders do
       post :confirm, on: :collection
+      get :complete, on: :collection
     end
     get 'customers/my_page', to: 'customers#show'
     get 'customers/edit' => 'customers#edit'
