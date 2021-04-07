@@ -1,5 +1,6 @@
 <div>
     <h1>商品一覧</h1>
+    <%= link_to "+", new_admin_item_path %>
     
     <table>
         <thead>
@@ -14,7 +15,7 @@
             <% @items.each do |item| %>
                 <tr>
                     <td><%= item.id %></td>
-                    <td><%= item.name %></td>
+                    <td><%= link_to item.name, admin_item_path(item) %></td>
                     <td><%= item.price %></td>
                 </tr>
                 <% end %>
