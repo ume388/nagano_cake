@@ -44,6 +44,9 @@ class Public::OrdersController < ApplicationController
   def complete
   end
   
+  def show
+  end
+  
   private
   
   def order_params
