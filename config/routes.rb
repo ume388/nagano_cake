@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     get 'customers/my_page', to: 'customers#show'
     get 'customers/edit' => 'customers#edit'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
   end
   
   namespace :public do
