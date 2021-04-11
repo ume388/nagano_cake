@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
       when Customer
-        root_path
+        customers_my_page_path
       when Admin
         admin_root_path
     end
