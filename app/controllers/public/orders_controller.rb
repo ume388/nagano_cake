@@ -7,11 +7,12 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.customer_id = current_customer.id
+    @order.save!
     redirect_to complete_orders_path
     
-    @cart_items = current_customer.cart_items
-    @cart_items.each do |cart_item|
+    cart_items = current_customer.cart_items
+    cart_items.each do |cart_item|
       order_detail = OrderDetail.new
       order_detail.order_id = @order.id
       order_detail.item_id = cart_item.item.id
@@ -30,11 +31,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.08}
     
-    if 0
+    if params[:order][:address_code] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
-    else 1
+      @order.name =current_customer.last_name + current_customer.first_name
+    else params[:order][:address_code] == "1"
       @order.postal_code =
       @order.address
       @order.name
