@@ -36,9 +36,9 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name =current_customer.last_name + current_customer.first_name
     else params[:order][:address_code] == "1"
-      @order.postal_code =
-      @order.address
-      @order.name
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
   end
 
