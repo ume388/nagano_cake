@@ -1,38 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>勝手にパスワード部分にバリデーションかかる</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_with(model:@customer, url: customer_registration_path,　local: true, method: :PATCH) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <label class>名前</label><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: ":last_name", placeholder: "(姓)" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: ":first_name" ,placeholder: "(名)" %>
+  </div>
+
+  <div class="field">
+    <label class>フリガナ</label><br />
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete:":last_name_kana" ,placeholder: "(セイ)" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: ":first_name_kana" ,placeholder: "(メイ)" %>
+  </div>
+
+  <div class="field">
+    <label class>郵便番号（ハイフンなし）</label><br />
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: ":postal_code" %>
+  </div>
+
+  <div class="field">
+    <label class>住所</label><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+  
+  <div class="field">
+    <label class>電話番号（ハイフンなし）</label><br />
+    <%= f.text_field :telephone_number, autofocus: true, autocomplete: ":telephone_number" %>
+  </div>
+
+  <div class="field">
+    <label>メールアドレス</label><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "編集内容を" %>
   </div>
 <% end %>
 
