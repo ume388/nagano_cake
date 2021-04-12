@@ -1,4 +1,4 @@
-<h2>勝手にパスワード部分にバリデーションかかる</h2>
+<h2>会員情報編集</h2>
 
 <%= form_with(model:@customer, url: customer_registration_path,　local: true, method: :PATCH) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
@@ -36,12 +36,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "編集内容を" %>
+    <%= f.submit "編集内容を保存" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<div>
+  <%= link_to "退会する", customers_unsubscribe_path %>
+</div>
 
 <%= link_to "Back", :back %>

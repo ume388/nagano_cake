@@ -9,5 +9,5 @@
   
   <%= link_to "退会しない", root_path %>
   
-  <p>退会する（あとでリンクにする）</p>
+  <%= link_to "退会する", customers_withdraw_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"} %>
 </div>

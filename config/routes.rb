@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'customers/my_page', to: 'customers#show'
     get 'customers/edit' => 'customers#edit'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
   end
   
   namespace :public do
