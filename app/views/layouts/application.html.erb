@@ -9,30 +9,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a>
+          <a class="navbar-brand p-3">
             <%= link_to image_tag("nagano_cake.logo.png"), root_path %>
           </a>
         
-          <div>
+          <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-                <li>
+                <li class="nav-item">
                   ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "マイページ", customers_my_page_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "商品一覧", items_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "カート", cart_items_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
                 </li>
     
@@ -51,24 +51,24 @@
                 </li>
     
               <% else %>
-                <li>
+                <li class="nav-item">
                   <%= link_to "About", about_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "商品一覧", items_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "新規登録", new_customer_registration_path %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "ログイン", new_customer_session_path %>
                 </li>
               <% end %>
-              <%= yield %>
             </ul>
           </div>
         </div>
       </nav>
     </header>
+    <%= yield %>
   </body>
 </html>
