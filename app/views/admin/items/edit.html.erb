@@ -1,17 +1,17 @@
-<div>
+<div class="container">
   <h1>商品編集</h1>
   
   <%= form_with model:@item, url: admin_item_path, local:true do |f| %>
-    <h4>商品画像</h4>
+    <div>商品画像</div>
     <%= f.attachment_field :image %>
     
-    <h4>商品名</h4>
+    <div>商品名</div>
     <%= f.text_field :name %>
     
-    <h4>商品説明</h4>
+    <div>商品説明</div>
     <%= f.text_area :introduction %>
     
-    <h4>税抜価格</h4>
+    <div>税抜価格</div>
     <%= f.text_field :price %><br>
     
     <%= f.submit "変更を保存" %>
