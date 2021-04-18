@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.total_payment = @order.shipping_cost + calculate(current_customer)
     @order.save!
     redirect_to complete_orders_path
     
@@ -17,7 +18,7 @@ class Public::OrdersController < ApplicationController
       order_detail.order_id = @order.id
       order_detail.item_id = cart_item.item.id
       order_detail.amount = cart_item.amount
-      order_detail.price = (cart_item.item.price * 1.08).round
+      order_detail.price = (cart_item.item.price * 1.08).floor
       order_detail.save
     end
   end
@@ -57,4 +58,13 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
   end
+  
+  def calculate(customer)
+    total_price = 0
+    customer.cart_items.each do |cart_item|
+      total_price += cart_item.amount * cart_item.item.price
+    end
+    return(total_price * 1.08).floor
+  end
+  
 end
