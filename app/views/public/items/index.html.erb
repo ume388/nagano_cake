@@ -1,11 +1,18 @@
-<div>
+<div class="container">
   <h1>商品一覧（全<%= @items.count %>件）</h1>
   
-  <div>
+  <div class="item-pict">
     <% @items.each do |item| %>
-      <%= link_to (attachment_image_tag item, :image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg"), item_path(item.id) %><br>
+      <%= link_to (attachment_image_tag item, :image, format: 'jpeg', size: "150x150", fallback: "no_image.jpg"), item_path(item.id) %><br>
       <%= item.name %><br>
       ￥<%= item.price.round %><br>
     <% end %>
   </div>
 </div>
+
+<style>
+  .item-pict{
+    display: flex;
+    justify-content: center;
+  }
+</style>
