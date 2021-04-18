@@ -1,9 +1,11 @@
-<div>
+<div class="container">
   <h1>マイページ</h1>
   
     <h3>登録情報</h3>
-    <%= link_to "編集する", customers_edit_path %>
-      <table>
+      <div class="text-right">
+        <%= link_to "編集する", customers_edit_path, class: "btn btn-success" %>
+      </div>
+      <table class="table">
         <tr>
           <td>氏名</td>
           <td>
@@ -36,6 +38,10 @@
         </tr>
       </table>    
   
-    <h3>注文履歴</h3>
-    <%= link_to "一覧を見る", orders_path %>
+    <div class="row">
+      <h3 class="col-lg-2">注文履歴</h3>
+      <div class="col-lg-10">
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+      </div>
+    </div>
 </div>
