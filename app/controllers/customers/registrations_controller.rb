@@ -38,8 +38,29 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  def edit
+    @customer = current_customer
+  end
+  
+  def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+      redirect_to customers_my_page_path
+    else
+      render 'edit'
+    end
+  end
 
+  protected
+  
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+  
+  def customer_params
+    params.require(:customer).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_deleted)
+  end
+  
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

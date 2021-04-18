@@ -1,7 +1,6 @@
-<div>
-    <h1>注文履歴</h1>
-
-    <table>
+<div class="container">
+    <h1>注文履歴一覧</h1>
+    <table class="table table-hover table-inverse">
         <thead>
             <tr>
                 <th>購入日時</th>
@@ -13,9 +12,11 @@
         <tbody>
             <% @orders.each do |order| %>
                 <tr>
-                    <td><%= order.created_at %></td>
-                    <td><%= order.customer_last_name + " " + order.customer.first_name %></td>
-                    <td><%= order_detail.amount %> </td>
+                    <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order.id) %></td>
+                    <td><%= order.customer.last_name + " " + order.customer.first_name %></td>
+                    <td>
+                        <%= order.order_details.count %>
+                    </td>
                     <td></td>
                 </tr>
                 <% end %>
