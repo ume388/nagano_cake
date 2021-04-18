@@ -1,21 +1,30 @@
-<div>
+<div class="container">
+  <div class="text-center">
   <h1>ようこそ、ながのCAKEへ！</h1><br>
     <P>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない方も商品の閲覧はできますが、<br>
       購入には会員登録が必要になります。
     </p>
+  </div>
   
   <h2>新着商品</h2>
-  <div>
+  <div class="item-box">
     <% @items.last(4).each do |item| %>
-      <%= attachment_image_tag item, :image, :fill, 50, 50, format: 'jpag', fallback: "no_image.jpg" %><br>
-      <%= link_to item.name, item_path(item.id) %><br>
-      ￥<%= item.price %><br>
+      <%= link_to (attachment_image_tag item, :image, :fill, 100, 100, format: 'jpag', fallback: "no_image.jpg"), item_path(item.id) %><br>
+      <%= item.name %><br>
+      ￥<%= item.price %>
     <% end %>
   </div>
   
-  <li>
+  <ul class="text-right">
     <%= link_to "すべての商品を見る", items_path %>
-  </li>
+  </ul>
 </div>
+
+<style>
+  .item-box{
+    display: flex;
+    justify-content: center;
+  }
+</style>
