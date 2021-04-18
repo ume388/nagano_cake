@@ -1,7 +1,7 @@
-<div>
+<div class="container">
   <h1>注文履歴一覧</h1>
   
-  <table>
+  <table class="table">
     <tr>
       <th>注文日</th>
       <th>配送先</th>
@@ -13,7 +13,7 @@
     <% @orders.each do |order| %>
     <tr>
       <td>
-        <%= order.created_at %>
+        <%= order.created_at.strftime("%Y-%m-%d") %>
       </td>
       <td>
         <%= order.postal_code %>
@@ -22,14 +22,14 @@
       </td>
       <td>
         <% order.order_details.each do |order_detail| %>
-          <%= order_detail.item.name %>
+          <%= order_detail.item.name %><br>
         <% end %>
       </td>
       <td>
         <%= order.total_payment %>
       </td>
       <td>
-        <%= link_to "表示する", order_path(order) %>
+        <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
       </td>
     </tr>
     <% end %>
