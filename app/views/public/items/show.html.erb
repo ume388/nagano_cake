@@ -1,15 +1,19 @@
-<div>
-  <div>
-    <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: 'no_image.jpg'%>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="text-right">
+        <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: 'no_image.jpg'%>
+      </div>
+    </div>
   
-  <div>
-    <%= form_for(@cart_item, url: cart_items_path(item_id: @item), method: :post) do |f| %>
-      <h2><%= @item.name %></h2><br>
-      <%= @item.introduction %><br>
-      ￥<%= (@item.price * 1.08).round %>（税込）<br>
-      <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
-      <%= f.submit "カートに入れる" %>
-    <% end %>
+    <div class="col-lg-6">
+      <%= form_for(@cart_item, url: cart_items_path(item_id: @item), method: :post) do |f| %>
+        <h2><%= @item.name %></h2><br>
+        <%= @item.introduction %><br>
+        ￥<%= (@item.price * 1.08).round %>（税込）<br>
+        <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
+    </div>
   </div>
 </div>
