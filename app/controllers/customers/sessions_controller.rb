@@ -24,7 +24,7 @@ class Customers::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true))
-        redirect_to new_customer_session_path
+        redirect_to new_customer_session_path, notice: "すでに退会しています。"
       end
     end
   end
