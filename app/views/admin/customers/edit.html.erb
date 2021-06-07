@@ -1,6 +1,7 @@
 <div>
   <h1><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報編集</h1>
   
+  <!--ユーザー情報の呼び出し-->
   <%= form_for(@customer, url: admin_customer_path) do |f| %>
 
   <table>
@@ -50,8 +51,8 @@
   </table>
 
 
-      <div>
-        <%= f.submit "変更を保存" %>
-      </div>
+    <div>
+      <%= f.submit "変更を保存" %>
+    </div>
   <% end %>
 </div>
