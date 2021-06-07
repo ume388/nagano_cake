@@ -1,7 +1,7 @@
-<div>
+<div class="container">
   <h1><%= @customer.last_name + " " + @customer.first_name %>さんの会員詳細</h1>
   
-   <table>
+   <table class="table">
       <tbody>
         <tr>
           <td>会員ID</td>
@@ -37,16 +37,16 @@
             <% if @customer.is_deleted == false %>
               有効
             <% else %>
-              無効
+              退会
             <% end %>
           </td>
         </tr>
       </tbody>
     </table>
     
-    <div>
-      <P>編集する（後でリンク追加する）</P>
-      <p>注文履歴一覧を見る（後でリンク追加する）</p>
+    <div class="text-center">
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-info" %>
+      <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
     </div>
 
 </div>

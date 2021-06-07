@@ -15,10 +15,17 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:show, :index]
-    resources :cart_items
-    resources :orders
+    resources :cart_items do
+      delete :destroy_all, on: :collection
+    end
+    resources :orders do
+      post :confirm, on: :collection
+      get :complete, on: :collection
+    end
     get 'customers/my_page', to: 'customers#show'
     get 'customers/edit' => 'customers#edit'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
   end
   
   namespace :public do
