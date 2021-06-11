@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%= @customer.last_name + " " + @customer.first_name %>さんの会員詳細</h1>
   
+   <!--会員情報の呼び出し-->
    <table class="table">
       <tbody>
         <tr>
@@ -44,6 +45,7 @@
       </tbody>
     </table>
     
+    <!--各種リンク-->
     <div class="text-center">
       <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-info" %>
       <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
