@@ -2,9 +2,12 @@
   <h1>マイページ</h1>
   
     <h3>登録情報</h3>
+      <!--会員情報編集画面へのリンク-->
       <div class="text-right">
         <%= link_to "編集する", customers_edit_path, class: "btn btn-success" %>
       </div>
+      
+      <!--登録した会員情報の呼び出し-->
       <table class="table">
         <tr>
           <td>氏名</td>
@@ -38,6 +41,7 @@
         </tr>
       </table>    
   
+    <!--注文履歴へのリンク-->
     <div class="row">
       <h3 class="col-lg-2">注文履歴</h3>
       <div class="col-lg-10">
