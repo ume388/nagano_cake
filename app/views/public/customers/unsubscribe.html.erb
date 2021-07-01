@@ -1,5 +1,8 @@
+<!--退会確認画面-->
 <div class="container">
-  <h1 class="text-center">本当に退会しますか？</h1>
+  <h1 class="text-center">
+    本当に退会しますか？
+  </h1>
   
   <p class="text-center">
     退会すると、会員登録情報や<br>
@@ -8,7 +11,9 @@
   </p>
   
   <div class="text-center">
+    <!--トップページへのリンク-->
     <%= link_to "退会しない", root_path, class: "btn btn-primary" %>
+    <!--退会-->
     <%= link_to "退会する", customers_withdraw_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn btn-danger" %>
   </div>
 </div>
