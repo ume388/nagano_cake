@@ -8,6 +8,7 @@
     </p>
   </div>
   
+  <!--最新の４件を表示-->
   <h2>新着商品</h2>
   <div class="item-box">
     <% @items.last(4).each do |item| %>
@@ -17,6 +18,7 @@
     <% end %>
   </div>
   
+  <!--商品一覧へのリンク-->
   <ul class="text-right">
     <%= link_to "すべての商品を見る", items_path %>
   </ul>
