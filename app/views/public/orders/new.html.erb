@@ -4,12 +4,14 @@
   <div>
     <%= form_with model:@order, url:confirm_orders_path, method: :post, local: true do |form| %>
       <h3>支払方法</h3>
+      <!--支払方法を選択-->
       <%= form.radio_button :payment_method, "クレジットカード" %>
       <%= form.label :クレジットカード %><br>
       <%= form.radio_button :payment_method, "銀行振込" %>
       <%= form.label :銀行振込 %>
   
       <h3>お届け先</h3>
+       	<!--住所を-->
        	<%= form.radio_button :address_code, 0 %>
 			  <%= form.label :ご自身の住所 %><br>
 			  〒<%= @customer.postal_code %>
