@@ -12,6 +12,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
   
+  # 更新に成功した場合とそれ以外の場合で遷移先を
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
